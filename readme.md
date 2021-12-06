@@ -1,4 +1,4 @@
-# Pop!_OS Automatic Battery Profile Management
+# Pop!_OS Automatic Battery Profile Adjustment
 
 ## Purpose
 
