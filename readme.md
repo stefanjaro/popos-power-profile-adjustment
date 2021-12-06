@@ -1,6 +1,6 @@
 # Pop!_OS Automatic Battery Profile Management
 
-# Purpose
+## Purpose
 
 This Python script (which could've been a Bash script had I known the language better) will switch between the battery profile options on Pop!_OS based on the battery status (charging, discharging, etc.) and capacity (power level) of your battery.
 
@@ -8,7 +8,7 @@ It was heavily inspired by an existing bash script which you can find here: http
 
 The reason why I wrote this one instead of forking the above is because I wanted to use Python instead.
 
-# Configuration Options
+## Configuration Options
 
 The global variables at the top of the script have been set to my liking and for my machine. You'll probably need to adjust these first, especially the locations of the battery status and battery capacity files.
 
@@ -21,7 +21,7 @@ The global variables at the top of the script have been set to my liking and for
 * `BATTERY_CAPACITY_FILE_LOC` -- The location of the battery capacity file. It's `"/sys/class/power_supply/BAT1/capacity"` for me but might be BAT0 for you.
 * `LOG_FILE_PATH` -- Where the log file will be saved. By default, it'll be created and saved in the Documents folder.
 
-# Log File
+## Log File
 
 By default, the script stores all activity in a log file saved in the Documents folder. Every 60 seconds (the default sleep time is 60 seconds) a new line will be written to the file. Each line is structured as follows:
 
@@ -31,19 +31,17 @@ You can check on the log file by either opening it in your favourite text editor
 
 `cat Documents/battery_profile_changes.txt`
 
-# Installation
+## Installation
 
-## One Time Use
+### One Time Use
 
 If you just want to check it out, download this repository, edit the environment variables (mentioned above) at the top of the script, navigate to the directory and run the script using:
 
-```python
-python3 power-profile-adjustment.py
-```
+`python3 power_profile_adjustment.py`
 
 Please note that at the time of writing the latest version of Pop!_OS comes with Python 3.9.5 pre-installed.
 
-## Load on Startup
+### Load on Startup
 
 By far the easiest way to set it up is by using the Startup Applications tool that comes pre-installed on Pop!_OS.
 
@@ -55,11 +53,11 @@ By far the easiest way to set it up is by using the Startup Applications tool th
 
 Now reboot, and the Python script will run on boot.
 
-## Troubleshooting
+### Troubleshooting
 
 * If you're having issues, try changing the script's permission setting using `chmod u+x /path/to/folder/power_profile_adjustment.py`.
 * Check if the Python script is running using `ps -fA | grep python` and looking for the script.
 
-# Additional Tips
+## Additional Tips
 
 If you're struggling with short battery life issues on Pop!_OS, make sure to check out [tlp](https://linrunner.de/tlp/) and [Powertop](https://wiki.archlinux.org/title/powertop).
