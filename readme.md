@@ -15,7 +15,7 @@ The global variables at the top of the script have been set to my liking and for
 * `SLEEP_TIMER` -- How long the script will sleep before it's run again.
 * `DISCHARGING INDICATOR` -- What the battery status file says when you're NOT CHARGING your battery.
 * `CHARGING INDICATOR` -- What the battery status file says when you ARE CHARGING your battery.
-* `FULL_CHARGE_INDIACTOR` -- What the battery status file says when you're at FULL CHARGE (interestingly mine says unknown and that's probably because of the battery charge limit options I've set on my Windows instance).
+* `FULL_CHARGE_INDICATOR` -- What the battery status file says when you're at FULL CHARGE (interestingly mine says unknown and that's probably because of the battery charge limit options I've set on my Windows instance).
 * `CHARGING_THRESHOLD` -- If the battery is charging but is below this threshold, it'll be set to `balanced`. If not, it'll be set to `performance`.
 * `BATTERY_STATUS_FILE_LOC` -- The location of the battery status file. It's `"/sys/class/power_supply/BAT1/status"` for me but might be BAT0 for you.
 * `BATTERY_CAPACITY_FILE_LOC` -- The location of the battery capacity file. It's `"/sys/class/power_supply/BAT1/capacity"` for me but might be BAT0 for you.
