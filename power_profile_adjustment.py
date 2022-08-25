@@ -20,7 +20,7 @@ FULL_CHARGE_INDICATOR = "Unknown" # oddly my computer doesn't say charged, it sa
 CHARGING_THRESHOLD = 50 # battery charge level threshold between balanced and performance when charging
 BATTERY_STATUS_FILE_LOC = "/sys/class/power_supply/BAT1/status" # the location of the battery status file
 BATTERY_CAPACITY_FILE_LOC = "/sys/class/power_supply/BAT1/capacity" # the location of the battery capacity file
-LOG_FILE_PATH = "/Documents/battery_profile_changes.txt" # where the log file should be saved
+LOG_FILE_PATH = "/Documents/battery-profile-change-logs/" # where the log file should be saved (folder)
 
 # ====================
 # ESSENTIAL FUNCTIONS
@@ -45,7 +45,7 @@ def get_battery_capacity():
 
 def log_profile_changes(change_status, battery_status, battery_capacity):
     """
-    Log changes made to the battery profile
+    Log changes made to the battery profile in a txt file created every day
 
     Keyword arguments:
         change_status -- the battery profile change to be logged
@@ -55,8 +55,17 @@ def log_profile_changes(change_status, battery_status, battery_capacity):
     # get current time
     current_time = time.asctime(time.localtime())
 
-    # form full log file path
-    full_log_file_path = os.path.expanduser("~") + LOG_FILE_PATH
+    # define target folder to store logs
+    target_folder = os.path.expanduser("~") + LOG_FILE_PATH
+
+    # check if folder exists, if not, create it
+    if os.path.isdir(target_folder) == False:
+        os.mkdir(target_folder)
+
+    # form full log file path with target folder and date at the end
+    current_date = datetime.datetime.now()
+    date_suffix = f"{current_date.year}-{current_date.month}-{current_date.day}"
+    full_log_file_path = target_folder + f"log-{date_suffix}.txt"
 
     with open(full_log_file_path, "a") as file:
         file.write(f"{current_time} | {battery_status} | {battery_capacity} | {change_status}\n")
